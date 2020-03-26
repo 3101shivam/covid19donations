@@ -344,9 +344,6 @@ table.dataTable.display tbody tr:first-of-type {
   color: var(--paleGray);
 }
 
-.text--white {
-    color: white;
-}
 .text--center {
   text-align: center;
 }
