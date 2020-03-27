@@ -133,6 +133,7 @@
                     <table id="sortable_table_Global" class="display compact responsive">
                         <thead>
                         <tr>
+                            <th class="text--gray">&nbsp;</th>
                             <th class="text--gray">Name</th>
                             <th class="text--gray">Amount</th>
                             <th class="text--gray">Country</th>
@@ -141,6 +142,10 @@
                         </thead>
                         <tbody>
                         <tr>
+                            <td class="text--gray">
+                                <span class="save-button" data-status="unselected" data-type="country"
+                                      data-name="China">&#9733;</span>
+                            </td>
                             <td class="text--gray">
                                 Abiral Pandey
                             </td>
@@ -368,7 +373,7 @@ document.onmousedown = rtclickcheck;
                     const td=document.createElement("td");
                     td.textContent = cell;
                     if(count==1){
-                        td.textContent = "<span class='save-button' data-status='unselected' data-type='country' data-name='China'>&#9733;</span>"
+                        td.innerHTML = "<span class='save-button' data-status='unselected' data-type='country' data-name='China'>&#9733;</span>"
                     }
                     else if (count==2){
                         td.className= "text--green";
