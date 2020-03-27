@@ -370,7 +370,7 @@ document.onmousedown = rtclickcheck;
                     if(count==1){
                         td.textContent = "<span class='save-button' data-status='unselected' data-type='country' data-name='China'>&#9733;</span>"
                     }
-                    if (count==2){
+                    else if (count==2){
                         td.className= "text--green";
                     }else if(count==4){
                         td.className= "text--red";
