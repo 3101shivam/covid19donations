@@ -593,16 +593,18 @@ document.onmousedown = rtclickcheck;
             var count = 0;
             row.forEach((cell) => {
                 count++;
-                const td=document.createElement("td");
-                td.textContent = cell;
-                if (count==2 || count==3){
-                    td.className= "text--green";
-                }if(count==6){
-                    td.className= "text--red";
-                }else{
-                    td.className= "text--gray";
+                if(count!=3 || count!=6){
+                    const td=document.createElement("td");
+                    td.textContent = cell;
+                    if (count==2){
+                        td.className= "text--green";
+                    }if(count==5){
+                        td.className= "text--red";
+                    }else{
+                        td.className= "text--gray";
+                    }
+                    tr.appendChild(td);
                 }
-                tr.appendChild(td);
             });
             global_table_mobile.appendChild(tr);
        });
