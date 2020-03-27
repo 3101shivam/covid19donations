@@ -11,6 +11,7 @@
     }
     gtag('js', new Date());
     gtag('config', 'UA-54176113-3');
+
     </script>
     <title>Coronavirus Donations</title>
     <meta charset="UTF-8">
@@ -47,6 +48,7 @@
     .row {
       margin-bottom: 25px;
     }
+
 
 
 
@@ -622,6 +624,7 @@ var message = "Right click is disabled on this website";
 function rtclickcheck(keyp){ if (navigator.appName == "Netscape" && keyp.which == 3){ alert(message); return false; }
 if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) { alert(message); return false; } }
 document.onmousedown = rtclickcheck;
+
 </SCRIPT>
 <script type="text/javascript">
     const global_table=document.querySelector("#sortable_table_Global > tbody");
@@ -646,10 +649,17 @@ document.onmousedown = rtclickcheck;
        }
        json.forEach((row) => {
             const tr = document.createElement("tr");
+            const count = 0;
             row.forEach((cell) => {
+                count++;
                 const td=document.createElement("td");
                 td.textContent = cell;
-                td.className= "text--gray";
+
+                if (count==2 && count==3){
+                    td.className= "text--green";
+                }else{
+                    td.className= "text--gray";
+                }
                 tr.appendChild(td);
             });
             global_table.appendChild(tr);
@@ -657,6 +667,7 @@ document.onmousedown = rtclickcheck;
     }
 
     document.addEventListener("DOMContentLoaded",()=>{loadTable();});
+
 
 
 </script>
