@@ -50,14 +50,7 @@
       margin-bottom: 25px;
     }
 
-
-
-
-
-
-
     </style>
-
 </head>
 
 <body class="data">
@@ -162,84 +155,6 @@
                             </td>
                             <td class="text--red">
                                 IT Inspector
-                            </td>
-                            <td class="text--red">
-                                25/03/2020
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text--gray">
-                                Vipranshu Pandey
-                            </td>
-                            <td class="text--green">
-                                &#8377;12000
-                            </td>
-                            <td class="text--green">
-                                UP
-                            </td>
-                            <td class="text--green">
-                                India
-                            </td>
-                            <td class="text--red">
-                                Army Officer
-                            </td>
-                            <td class="text--red">
-                                25/03/2020
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text--gray">
-                                Sunil Prajapati
-                            </td>
-                            <td class="text--green">
-                                &#8377;12000
-                            </td>
-                            <td class="text--green">
-                                MP
-                            </td>
-                            <td class="text--green">
-                                India
-                            </td>
-                            <td class="text--red">
-                                Railway Officer
-                            </td>
-                            <td class="text--red">
-                                25/03/2020
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text--gray">
-                                Loveneesh Sharma
-                            </td>
-                            <td class="text--green">
-                                &#8377;0
-                            </td>
-                            <td class="text--green">
-                                MP
-                            </td>
-                            <td class="text--green">
-                                India
-                            </td>
-                            <td class="text--red">
-                                OU
-                                25/03/2020
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text--gray">
-                                Dharmendra Sharma
-                            </td>
-                            <td class="text--green">
-                                &#8377;12000
-                            </td>
-                            <td class="text--green">
-                                Texas
-                            </td>
-                            <td class="text--green">
-                                USA
-                            </td>
-                            <td class="text--red">
-                                IT Engineer
                             </td>
                             <td class="text--red">
                                 25/03/2020
@@ -620,17 +535,16 @@
         crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/r-2.2.3/datatables.min.js"></script>
 
-
 <SCRIPT language=JavaScript>
 var message = "Right click is disabled on this website";
 function rtclickcheck(keyp){ if (navigator.appName == "Netscape" && keyp.which == 3){ alert(message); return false; }
 if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) { alert(message); return false; } }
 document.onmousedown = rtclickcheck;
-
-
 </SCRIPT>
+
 <script type="text/javascript">
     const global_table=document.querySelector("#sortable_table_Global > tbody");
+    const global_table_mobile=document.querySelector("#sortable_table_mobile_Global > tbody");
 
     function loadTable(){
         const request=new XMLHttpRequest();
@@ -639,14 +553,15 @@ document.onmousedown = rtclickcheck;
             try{
                const json= JSON.parse(request.responseText)
                populateTable(json);
+               populate_mobile_table(json);
             }catch(e){
             console.warn("Could not load table" + e);
             }
         };
-
         request.send();
     }
     function populateTable(json){
+
        while(global_table.firstChild){
         global_table.removeChild(global_table.firstChild);
        }
@@ -657,9 +572,6 @@ document.onmousedown = rtclickcheck;
                 count++;
                 const td=document.createElement("td");
                 td.textContent = cell;
-
-
-<!---->
                 if (count==2 || count==3){
                     td.className= "text--green";
                 }if(count==6){
@@ -667,11 +579,33 @@ document.onmousedown = rtclickcheck;
                 }else{
                     td.className= "text--gray";
                 }
-
-
                 tr.appendChild(td);
             });
             global_table.appendChild(tr);
+       });
+    }
+
+    function populate_mobile_table(){
+        while(global_table_mobile.firstChild){
+        global_table_mobile.removeChild(global_table_mobile.firstChild);
+       }
+       json.forEach((row) => {
+            const tr = document.createElement("tr");
+            var count = 0;
+            row.forEach((cell) => {
+                count++;
+                const td=document.createElement("td");
+                td.textContent = cell;
+                if (count==2 || count==3){
+                    td.className= "text--green";
+                }if(count==6){
+                    td.className= "text--red";
+                }else{
+                    td.className= "text--gray";
+                }
+                tr.appendChild(td);
+            });
+            global_table_mobile.appendChild(tr);
        });
     }
 
