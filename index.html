@@ -135,7 +135,7 @@
                         <tr>
                             <th class="text--gray">&nbsp;</th>
                             <th class="text--gray">Name</th>
-                            <th class="text--gray">Amount</th>
+                            <th class="text--gray">Amount - &#8377;</th>
                             <th class="text--gray">Country</th>
                             <th class="text--gray">Occupation</th>
                         </tr>
@@ -190,7 +190,7 @@
                                 Name
                             </td>
                             <td class="text--green">
-                                Amount
+                                Amount - &#8377;
                             </td>
                             <td class="text--green">
                                 Country
@@ -340,10 +340,8 @@ document.onmousedown = rtclickcheck;
                 td.textContent = cell;
                 if(count==1){
                     td.innerHTML = "<span class='save-button' data-status='unselected' data-type='country' data-name='China'>&#9733;</span>"
-                    td.className = "text--gray";
                 }
                 else if (count==2){
-                    td.innerHTML = &#8377;cell;
                     td.className= "text--green";
                 }else if(count==4){
                     td.className= "text--red";
@@ -378,7 +376,6 @@ document.onmousedown = rtclickcheck;
                         td.innerHTML = "<span class='save-button' data-status='unselected' data-type='country' data-name='China'>&#9733;</span>"
                     }
                     else if (count==2){
-                        td.innerHTML = &#8377;cell;
                         td.className= "text--green";
                     }else if(count==4){
                         td.className= "text--red";
