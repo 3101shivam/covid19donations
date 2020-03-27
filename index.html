@@ -593,7 +593,7 @@ document.onmousedown = rtclickcheck;
             var count = 0;
             row.forEach((cell) => {
                 count++;
-                if(count!=3 || count!=6){
+                if(count!=3 && count!=6){
                     const td=document.createElement("td");
                     td.textContent = cell;
                     if (count==2){
