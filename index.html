@@ -334,7 +334,7 @@ document.onmousedown = rtclickcheck;
                 const td=document.createElement("td");
                 td.textContent = cell;
                 if(count==1){
-                    td.innerHTML = <span class="save-button" data-status="unselected" data-type="country" data-name="China">&#9733;</span>;
+                    td.innerHTML = "<span class='save-button' data-status='unselected' data-type='country' data-name='China'>&#9733;</span>"
                 }
                 else if (count==2 || count==3){
                     td.className= "text--green";
@@ -368,7 +368,7 @@ document.onmousedown = rtclickcheck;
                     const td=document.createElement("td");
                     td.textContent = cell;
                     if(count==1){
-                        td.textContent = <span class="save-button" data-status="unselected" data-type="country" data-name="China">&#9733;</span>;
+                        td.textContent = "<span class='save-button' data-status='unselected' data-type='country' data-name='China'>&#9733;</span>"
                     }
                     if (count==2){
                         td.className= "text--green";
