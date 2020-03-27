@@ -649,13 +649,14 @@ document.onmousedown = rtclickcheck;
        while(sortable_table_Global.firstChild){
         sortable_table_Global.removeChild(sortable_table_Global.firstChild);
        }
-       json.forEach((row)=>{
-            const tr=document.createElement("tr");
-            row.forEach((cell)=>{
+       json.forEach((row) => {
+            const tr = document.createElement("tr");
+            row.forEach((cell) => {
                 const td=document.createElement("td");
                 td.textContent = cell;
                 tr.appendChild(td);
             });
+            sortable_table_Global.appendChild(tr);
        });
     }
 
