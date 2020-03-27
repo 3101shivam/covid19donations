@@ -133,10 +133,8 @@
                         <tr>
                             <th class="text--gray">Name</th>
                             <th class="text--gray">Amount</th>
-                            <th class="text--gray">State</th>
                             <th class="text--gray">Country</th>
                             <th class="text--gray">Occupation</th>
-                            <th class="text--gray">Date</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -148,17 +146,12 @@
                                 &#8377;12000
                             </td>
                             <td class="text--green">
-                                MP
-                            </td>
-                            <td class="text--green">
                                 India
                             </td>
                             <td class="text--red">
                                 IT Inspector
                             </td>
-                            <td class="text--red">
-                                25/03/2020
-                            </td>
+
                         </tr>
                         </tbody>
                     </table>
@@ -573,7 +566,7 @@ document.onmousedown = rtclickcheck;
                 td.textContent = cell;
                 if (count==2 || count==3){
                     td.className= "text--green";
-                }else if(count==6){
+                }else if(count==4){
                     td.className= "text--red";
                 }else{
                     td.className= "text--gray";
@@ -599,18 +592,16 @@ document.onmousedown = rtclickcheck;
             var count = 0;
             row.forEach((cell) => {
                 count++;
-                if(count!=3 && count!=6){
                     const td=document.createElement("td");
                     td.textContent = cell;
                     if (count==2){
                         td.className= "text--green";
-                    }else if(count==5){
+                    }else if(count==4){
                         td.className= "text--red";
                     }else{
                         td.className= "text--gray";
                     }
                     tr.appendChild(td);
-                }
             });
             global_table_mobile.appendChild(tr);
        });
