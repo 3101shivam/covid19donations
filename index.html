@@ -653,8 +653,8 @@ document.onmousedown = rtclickcheck;
             const tr = document.createElement("tr");
             row.forEach((cell) => {
                 const td=document.createElement("td");
+                cell.className = "text--gray";
                 td.textContent = cell;
-                td.className = "text--gray";
                 tr.appendChild(td);
             });
             sortable_table_Global.appendChild(tr);
