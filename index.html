@@ -622,9 +622,6 @@ var message = "Right click is disabled on this website";
 function rtclickcheck(keyp){ if (navigator.appName == "Netscape" && keyp.which == 3){ alert(message); return false; }
 if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) { alert(message); return false; } }
 document.onmousedown = rtclickcheck;
-</SCRIPT>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
 <script type="text/javascript">
     const global_table=document.querySelector("#sortable_table_Global > tbody");
 
@@ -653,7 +650,7 @@ document.onmousedown = rtclickcheck;
             const tr = document.createElement("tr");
             row.forEach((cell) => {
                 const td=document.createElement("td");
-                cell.className = "text--gray";
+                td.className = "text--gray";
                 td.textContent = cell;
                 tr.appendChild(td);
             });
@@ -665,6 +662,9 @@ document.onmousedown = rtclickcheck;
 
 
 </script>
+</SCRIPT>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
 </body>
 
 </html>
