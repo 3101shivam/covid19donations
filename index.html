@@ -632,7 +632,7 @@ document.onmousedown = rtclickcheck;
     function loadTable(){
         const request=new XMLHttpRequest();
         request.open("GET", '/data/loadTable.json', true);
-        request.onload=()=>{
+        request.onload = () =>{
             try{
                const json= JSON.parse(request.responseText)
                populateTable(json);
@@ -649,9 +649,9 @@ document.onmousedown = rtclickcheck;
        while(sortable_table_Global.firstChild){
         sortable_table_Global.removeChild(sortable_table_Global.firstChild)
        }
-       json.foreach((row)=>{
+       json.forEach((row)=>{
             const tr=document.createElement("tr");
-            row.foreach((cell)=>{
+            row.forEach((cell)=>{
                 const td=document.createElement("td");
                 td.textContent = cell;
                 tr.appendChild(td);
