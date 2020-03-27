@@ -637,7 +637,7 @@ document.onmousedown = rtclickcheck;
                const json= JSON.parse(request.responseText)
                populateTable(json);
             }catch(e){
-            console.warn("Could not load table");
+            console.warn("Could not load table" + e);
             }
         };
 
