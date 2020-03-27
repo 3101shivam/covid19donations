@@ -544,7 +544,6 @@ document.onmousedown = rtclickcheck;
 
 <script type="text/javascript">
     const global_table=document.querySelector("#sortable_table_Global > tbody");
-    const global_table_mobile=document.querySelector("#sortable_table_mobile_Global > tbody");
 
     function loadTable(){
         const request=new XMLHttpRequest();
@@ -584,6 +583,13 @@ document.onmousedown = rtclickcheck;
             global_table.appendChild(tr);
        });
     }
+
+    document.addEventListener("DOMContentLoaded",()=>{loadTable();});
+</script>
+
+<script type="text/javascript">
+    const global_table_mobile=document.querySelector("#sortable_table_mobile_Global > tbody");
+
     function populate_mobile_table(json){
         while(global_table_mobile.firstChild){
         global_table_mobile.removeChild(global_table_mobile.firstChild);
@@ -598,7 +604,7 @@ document.onmousedown = rtclickcheck;
                     td.textContent = cell;
                     if (count==2){
                         td.className= "text--green";
-                    }if(count==5){
+                    }else if(count==5){
                         td.className= "text--red";
                     }else{
                         td.className= "text--gray";
@@ -609,7 +615,6 @@ document.onmousedown = rtclickcheck;
             global_table_mobile.appendChild(tr);
        });
     }
-    document.addEventListener("DOMContentLoaded",()=>{loadTable();});
 </script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
