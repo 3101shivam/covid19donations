@@ -651,7 +651,6 @@ document.onmousedown = rtclickcheck;
             row.forEach((cell) => {
                 const td=document.createElement("td");
                 td.textContent = cell;
-                td.className = "text--gray";
                 tr.appendChild(td);
             });
             global_table.appendChild(tr);
