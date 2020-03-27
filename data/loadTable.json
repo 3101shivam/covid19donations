@@ -1,11 +1,13 @@
 [
-  ["0","PV Sindhu","10,00,000","India","Shuttler"],
-  ["0","Pawan Kalyan","2,00,00,000","India","Telgu Actor"],
-  ["0","Bajrang punia","6 Months salary","India","wrestler"],
-  ["0","Gautam Gambhir","50,00,000","India","Former Cricketer"],
-  ["0","Cricket Association of Bengal","25,00,000","India","Organization"],
-  ["0","Avishek Dalmiya","5,00,000","India","President CAB"],
-  ["0","Rajnikanth","50,00,000","India","South Indian Actor"]
-
+["0","PV Sindhu","10,00,000","India","Shuttler"],
+["0","Pawan Kalyan","2,00,00,000","India","Telgu Actor"],
+["0","Bajrang punia","6 Months salary","India","wrestler"],
+["0","Gautam Gambhir","50,00,000","India","Former Cricketer"],
+["0","Cricket Association of Bengal","25,00,000","India","Organization"],
+["0","Avishek Dalmiya","5,00,000","India","President CAB"],
+["0","Rajnikanth","50,00,000","India","South Indian Actor"],
+["0", "Sachin Tendulkar", "50,00,000", "India","Cricketer"],
+["0", "Saurav Ganguly", "50,00,000", "India","BCCI President"]
+["0", "MS Dhoni", "1,00,000", "India","Cricketer"]
 
 ]
