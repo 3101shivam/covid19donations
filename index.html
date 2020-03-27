@@ -340,8 +340,10 @@ document.onmousedown = rtclickcheck;
                 td.textContent = cell;
                 if(count==1){
                     td.innerHTML = "<span class='save-button' data-status='unselected' data-type='country' data-name='China'>&#9733;</span>"
+                    td.className = "text--gray";
                 }
-                else if (count==2 || count==3){
+                else if (count==2){
+                    td.innerHTML = &#8377;cell;
                     td.className= "text--green";
                 }else if(count==4){
                     td.className= "text--red";
@@ -376,6 +378,7 @@ document.onmousedown = rtclickcheck;
                         td.innerHTML = "<span class='save-button' data-status='unselected' data-type='country' data-name='China'>&#9733;</span>"
                     }
                     else if (count==2){
+                        td.innerHTML = &#8377;cell;
                         td.className= "text--green";
                     }else if(count==4){
                         td.className= "text--red";
