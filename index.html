@@ -11,11 +11,6 @@
     }
     gtag('js', new Date());
     gtag('config', 'UA-54176113-3');
-
-
-
-
-
     </script>
     <title>Coronavirus Donations</title>
     <meta charset="UTF-8">
@@ -39,11 +34,6 @@
     <meta name="twitter:image" content="https://covid19donations.imfast.io/thumbnailcorona.jpg">
     <meta name="twitter:creator" content="@jensechu">
     <meta name="twitter:card" content="summary_large_image"/>
-
-    <!--    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">-->
-    <!--    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">-->
-    <!--    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">-->
-    <!--    <link rel="manifest" href="/images/site.webmanifest">-->
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -626,453 +616,53 @@
         crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/r-2.2.3/datatables.min.js"></script>
 
-<script>
-    const mobileBreakpoint = 980;
-    const hideDayDataConfig = {
-      "columnDefs": [{
-          responsivePriority: 2,
-          targets: 1
-        },
-        {
-          "targets": [2, 3, 5, 6],
-          "visible": false,
-          "searchable": false
-        }
-      ],
-    }
-    let config = {
-      responsive: {
-        details: false
-      },
-      data: null,
-      "scrollY": "370px",
-      "scrollCollapse": true,
-      "language": {
-        "search": "&#128269;",
-        "searchPlaceholder": "search data"
-      },
-      "autoWidth": true,
-      "bInfo": false,
-      "bPaginate": false,
-      "order": [
-        [1, "desc"]
-      ],
-      "columnDefs": [{
-          responsivePriority: 2,
-          targets: 1
-        },
-        {
-          "targets": [3, 6],
-          "visible": false,
-          "searchable": false
-        }
-      ],
-      "columns": [{
-          data: "country",
-          "width": "20%",
-          className: 'text--gray'
-        },
-        {
-          data: "cases",
-          className: 'text--green'
-        },
-        {
-          data: "caseRateCopy",
-          className: 'text--green',
-          render: (data, type, row) => {
-            if (data === "0" || row.caseRate === "0.00" || row.caseRate === "0") return '';
-            if (type === "display") return `&#8593; ${data} (${row.caseRate}%)`
-            return data;
-          }
-        },
-        {
-          data: "caseRate",
-          className: 'text--green',
-        },
-        {
-          data: "deaths",
-          className: 'text--red',
-        },
-        {
-          data: "deathRateCopy",
-          className: 'text--red',
-          render: (data, type, row) => {
-            if (data === "0" || row.deathRate === "0.00" || row.deathRate === "0") return '';
-            if (type === "display") return `&#8593; ${data} (${row.deathRate}%)`
-            return data;
-          }
-        },
-        {
-          data: "deathRate",
-          className: 'text--red'
-        },
-        {
-          data: "recovered",
-          className: 'text--blue'
-        },
-        {
-          data: "serious",
-          className: 'text--yellow'
-        }
-      ]
-    }
 
-    const mobileConfig = {
-      responsive: {
-        details: false
-      },
-      "ordering": true,
-      "scrollCollapse": true,
-      "language": {
-        "search": "&#128269;",
-        "searchPlaceholder": "search data"
-      },
-      "autoWidth": false,
-      "bInfo": false,
-      "bPaginate": false,
-      "order": [
-        [2, "desc"]
-      ],
-
-      "columnDefs": [{
-          width: 50,
-          targets: 1
-        },
-        {
-          "targets": [3, 5],
-          "visible": false,
-          "searchable": false
-        }
-      ],
-      "columns": [{
-          data: "saved",
-          "width": "1px"
-        },
-        {
-          data: "country",
-          className: 'text--gray',
-          "width": "70px"
-        },
-        {
-          data: "cases",
-          className: 'text--green',
-          render: (data, type, row) => {
-            if (data === "0" || row.caseRate === "0.00") return '';
-            if (type === "display" && row.caseRate !== "0") return `${data} <br/> &#8593; ${row.caseRate}%`
-            return data;
-          }
-        },
-        {
-          data: "caseRate",
-          className: 'text--green',
-        },
-        {
-          data: "deaths",
-          className: 'text--red',
-          render: (data, type, row) => {
-            if (data === "0" || row.deathRate === "0.00") return '';
-            if (type === "display" && row.deathRate !== "0") return `${data} <br/> &#8593; ${row.deathRate}%`
-            return data;
-          }
-        },
-        {
-          data: "deathRate",
-          className: 'text--red',
-        },
-        {
-          data: "recovered",
-          className: 'text--blue'
-        }
-      ]
-    }
-
-    $(document).ready(function() {
-      var globalTable = $('#sortable_table_Global').DataTable(config);
-      $('#sortable_table_USA').DataTable(config);
-      $('#sortable_table_China').DataTable({
-        ...config,
-        ...hideDayDataConfig
-      });
-      $('#sortable_table_Canada').DataTable({
-        ...config,
-        ...hideDayDataConfig
-      });
-      $('#sortable_table_Australia').DataTable({
-        ...config,
-        ...hideDayDataConfig
-      });
-      $('#sortable_table_Africa').DataTable(config);
-      $('#sortable_table_LatinAmerica').DataTable(config);
-      $('#sortable_table_Europe').DataTable(config);
-
-      var globalTable = $('#sortable_table_mobile_Global').DataTable({
-        ...mobileConfig,
-        "scrollY": "370px"
-      });
-      $('#sortable_table_mobile_USA').DataTable(mobileConfig);
-      $('#sortable_table_mobile_China').DataTable(mobileConfig);
-      $('#sortable_table_mobile_Canada').DataTable(mobileConfig);
-      $('#sortable_table_mobile_Australia').DataTable(mobileConfig);
-      $('#sortable_table_mobile_Africa').DataTable(mobileConfig);
-      $('#sortable_table_mobile_LatinAmerica').DataTable(mobileConfig);
-      $('#sortable_table_mobile_Europe').DataTable(mobileConfig);
-
-      var savedTable = $('#sortable_table_Saved').DataTable(config);
-      var savedMobileTable = $('#sortable_table_mobile_Saved').DataTable(mobileConfig);
-
-      var activeSavedTable = function() {
-        return $('#sortable_table_Saved').is(':visible') ? savedTable : savedMobileTable
-      }
-
-      var activeSavedContainerId = function() {
-        return $('#container_Saved').is(':visible') ? '#container_Saved' : '#container_mobile_Saved'
-      }
-
-      var activeUSATable = function() {
-        return $('#sortable_table_USA').is(':visible') ? '#sortable_table_USA' : '#sortable_table_mobile_USA'
-      }
-
-      var handleRemovingOwnRow = function(event) {
-        event.preventDefault();
-        if (!window.localStorage) return;
-
-        var $currentRow = $(this).closest("tr");
-        var $saveButton = $currentRow.find('.save-button');
-        var rowData = {
-          name: $saveButton.data('name'),
-          type: $saveButton.data('type')
-        }
-        activeSavedTable().row($currentRow).remove().draw();
-        $(`.save-button[data-name="${rowData.name}"][data-name="${rowData.name}"]`).attr("data-status", "unselected")
-
-        removeRow(rowData)
-      }
-
-      var handleUnselectingSavedRow = function(event) {
-        event.preventDefault();
-        if (!window.localStorage) return;
-
-        var $currentRow = $(this).closest("tr");
-        var $saveButton = $currentRow.find('.save-button');
-        var rowData = {
-          name: $saveButton.data('name'),
-          type: $saveButton.data('type')
-        }
-        var $targetRow = $(`.saved-table:visible [data-name="${rowData.name}"][data-name="${rowData.name}"]`).closest("tr")
-
-        activeSavedTable().row($targetRow).remove().draw();
-
-        $saveButton.attr('data-status', 'unselected')
-
-        removeRow(rowData)
-      }
-
-      var handleSelectingSavedRow = function(event) {
-        if (!window.localStorage) return;
-        if (window.innerWidth >= mobileBreakpoint) {
-          $('#container_Saved').css({
-            'display': 'block'
-          })
-        } else {
-          $('#container_mobile_Saved').css({
-            'display': 'block'
-          })
-        }
-        event.preventDefault();
-        if (!window.localStorage) return;
-
-        var $currentRow = $(this).closest("tr");
-        var $currentTable = $(this).closest("table")
-        var $saveButton = $currentRow.find('.save-button');
-
-        var data = $currentTable.DataTable().row($currentRow).data();
-        $saveButton.attr('data-status', 'selected')
-
-        activeSavedTable().row.add(data).draw();
-        saveRow({
-          name: $saveButton.data('name'),
-          type: $saveButton.data('type')
-        })
-      }
-      $(".saved-table").on('click', '.save-button', handleRemovingOwnRow);
-      $("table:not(.saved-table)").on('click', '.save-button[data-status="selected"]', handleUnselectingSavedRow);
-      $("table:not(.saved-table)").on('click', '.save-button[data-status="unselected"]', handleSelectingSavedRow);
-
-      var getSavedRows = function() {
-        //TODO: Show message that says they can't save on their device?
-        if (!window.localStorage) return;
-
-        let data = JSON.parse(localStorage.getItem('germtracker'));
-        if (data == null) data = [];
-
-        return data;
-      }
-
-      var saveRow = function(rowData) {
-        var savedRows = getSavedRows()
-        var rowAlreadySaved = !!savedRows.filter(row => {
-          return row.name === rowData.name && row.type === rowData.type
-        }).length
-
-        if (rowAlreadySaved) return
-
-        savedRows.push(rowData)
-        localStorage.setItem('germtracker', JSON.stringify(savedRows));
-        if (getSavedRows().length) {
-          $(activeSavedContainerId()).css({
-            'display': 'block'
-          })
-        }
-      }
-
-      var removeRow = function(rowData) {
-        var savedRows = getSavedRows()
-        var remainingRows = savedRows.filter(row => {
-          return row.name !== rowData.name
-        })
-
-        localStorage.setItem('germtracker', JSON.stringify(remainingRows));
-        if (!getSavedRows().length) {
-          $(activeSavedContainerId()).css({
-            'display': 'none'
-          })
-        }
-      }
-
-      var addAllRows = function() {
-        getSavedRows().forEach(row => {
-          addRow(row)
-        })
-      }
-
-      var addRow = function(rowData) {
-        let prefix = ''
-        if (rowData.type === "state") prefix += activeUSATable()
-
-        $(`${prefix} [data-name="${rowData.name}"][data-name="${rowData.name}"]:visible`).first().click()
-      }
-
-      addAllRows();
-
-      var displayOrder = [
-        "QuickFacts",
-        "Global",
-        "USA",
-        "Europe",
-        "Africa",
-        "LatinAmerica",
-        "China",
-        "Canada",
-        "Australia"
-      ]
-      var $dropdownLabel = $('.dropdown-toggle');
-      var $tableLegend = $('.mobile-nav-legend').first();
-      var topPoistion = (region) => {
-        return $('#container_mobile_' + region).offset().top - 250
-      }
-      var showRegionTotal = (region, showTotalBar = true) => {
-        $dropdownLabel.text(region);
-        $('.show-element').removeClass('show-element')
-
-        $('.sort-copy').addClass('show-element')
-        $('#mobile-nav-legend_' + region).addClass('show-element')
-        if (showTotalBar) $('#mobile-nav-total_' + region).addClass('show-element')
-      }
-
-      var handleCategorySort = function() {
-        $('.cateogry_sort').on('click', function() {
-          var action = $(this).data('action');
-          var region = $(this).data('region');
-          var $mobileTab = $(this).parents().find('#mobile-nav-legend_' + region)
-          var $selector = $("#sortable_table_mobile_" + region + " [data-action='" + action + "']")
-
-          $mobileTab.find('.sorted-column--desc').removeClass('sorted-column--desc');
-          $mobileTab.find('.sorted-column--asc').removeClass('sorted-column--asc');
-          $selector.click()
-
-          var className = $selector.hasClass('sorting_desc') ? 'sorted-column--desc' : 'sorted-column--asc'
-
-          $(this).find('.legend-label').addClass(className)
-          $(window).scrollTop(topPoistion(region) + 110);
-        })
-      }
-
-      handleCategorySort();
-
-      if (!!window.scrollY) {
-        $('nav.fixed-top').css({
-          'margin-top': '0'
-        });
-      }
-
-      $(window).scroll(function() {
-        var scrollPosition = $(document).scrollTop()
-
-        // Fix the Dropdwn Nav after main header scrolls.
-        if ($(document).scrollTop() > 60) {
-          $('nav.fixed-top').css({
-            'margin-top': '0'
-          });
-        }
-
-        // Toggle the Legend and Totals in Dropdown Nav depending on
-        // which Region is currently in the viewport.
-        if (scrollPosition > topPoistion(displayOrder[8])) {
-          showRegionTotal(displayOrder[8])
-        } else if (scrollPosition > topPoistion(displayOrder[7])) {
-          showRegionTotal(displayOrder[7])
-        } else if (scrollPosition > topPoistion(displayOrder[6])) {
-          showRegionTotal(displayOrder[6])
-        } else if (scrollPosition > topPoistion(displayOrder[5])) {
-          showRegionTotal(displayOrder[5])
-        } else if (scrollPosition > topPoistion(displayOrder[4])) {
-          showRegionTotal(displayOrder[4])
-        } else if (scrollPosition > topPoistion(displayOrder[3])) {
-          showRegionTotal(displayOrder[3])
-        } else if (scrollPosition > topPoistion(displayOrder[2])) {
-          showRegionTotal(displayOrder[2])
-        } else if (scrollPosition > topPoistion(displayOrder[1])) {
-          showRegionTotal(displayOrder[1])
-        } else if (scrollPosition > topPoistion('Saved')) {
-          if ($('#container_mobile_Saved').is(':visible')) showRegionTotal('Saved', false)
-        } else if (scrollPosition > 60) {
-          handleCategorySort();
-          $('.show-element').removeClass('show-element')
-          $('nav.fixed-top').css({
-            'margin-top': '0'
-          });
-        } else {
-          $('.show-element').removeClass('show-element')
-          $dropdownLabel.text('Jump to Region');
-
-          $('nav.fixed-top').css({
-            'margin-top': '50px'
-          });
-        }
-      });
-    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
 <SCRIPT language=JavaScript>
 var message = "Right click is disabled on this website";
 function rtclickcheck(keyp){ if (navigator.appName == "Netscape" && keyp.which == 3){ alert(message); return false; }
 if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) { alert(message); return false; } }
 document.onmousedown = rtclickcheck;
 </SCRIPT>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+<script type="text/javascript">
+    const global_table=document.querySelector("#sortable_table_Global > tbody");
 
+
+    function loadTable(){
+        const request=new XMLHttpRequest();
+        request.open("GET", '/data/loadTable.json', true);
+        request.onload=()=>{
+            try{
+               const json= JSON.parse(request.responseText)
+               populateTable(json);
+            }catch(e){
+            console.warn("Could not load table")
+            }
+        };
+
+        request.send();
+    }
+
+
+    function populateTable(json){
+       while(sortable_table_Global.firstChild){
+        sortable_table_Global.removeChild(sortable_table_Global.firstChild)
+       }
+       json.foreach((row)=>{
+            const tr=document.createElement("tr");
+            row.foreach((cell)=>{
+                const td=document.createElement("td");
+                td.textContent = cell;
+                tr.appendChild(td);
+            });
+       });
+    }
+
+    document.addEventListener("DOMContentLoaded",()=>{loadTable();});
+
+
+</script>
 </body>
 
 </html>
