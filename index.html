@@ -637,7 +637,7 @@ document.onmousedown = rtclickcheck;
                const json= JSON.parse(request.responseText)
                populateTable(json);
             }catch(e){
-            console.warn("Could not load table")
+            console.warn("Could not load table");
             }
         };
 
@@ -647,7 +647,7 @@ document.onmousedown = rtclickcheck;
 
     function populateTable(json){
        while(sortable_table_Global.firstChild){
-        sortable_table_Global.removeChild(sortable_table_Global.firstChild)
+        sortable_table_Global.removeChild(sortable_table_Global.firstChild);
        }
        json.forEach((row)=>{
             const tr=document.createElement("tr");
