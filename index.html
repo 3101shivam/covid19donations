@@ -311,16 +311,12 @@ document.onmousedown = rtclickcheck;
     const global_table=document.querySelector("#sortable_table_Global > tbody");
 
     function loadTable(){
-        alert("hello 1")
         var request=new XMLHttpRequest();
-
-
         request.open("GET", '/data/loadTable.json', true);
         request.setRequestHeader("Content-Type", "application/json");
         request.onload = () =>{
             try{
                const json= JSON.parse(request.responseText)
-               alert("inside");
                populateTable(json);
                populate_mobile_table(json);
             }catch(e){
@@ -330,7 +326,6 @@ document.onmousedown = rtclickcheck;
         request.send();
     }
     function populateTable(json){
-        alert("hello 2")
        while(global_table.firstChild){
         global_table.removeChild(global_table.firstChild);
        }
@@ -365,7 +360,6 @@ document.onmousedown = rtclickcheck;
     const global_table_mobile=document.querySelector("#sortable_table_mobile_Global > tbody");
 
     function populate_mobile_table(json){
-        alert("hello 2")
         while(global_table_mobile.firstChild){
         global_table_mobile.removeChild(global_table_mobile.firstChild);
        }
