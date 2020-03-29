@@ -360,6 +360,7 @@ document.onmousedown = rtclickcheck;
     const global_table_mobile=document.querySelector("#sortable_table_mobile_Global > tbody");
 
     function populate_mobile_table(json){
+        alert("Hello");
         while(global_table_mobile.firstChild){
         global_table_mobile.removeChild(global_table_mobile.firstChild);
        }
