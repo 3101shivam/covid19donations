@@ -312,9 +312,10 @@ document.onmousedown = rtclickcheck;
 
     function loadTable(){
         var request=new XMLHttpRequest();
-        request.setRequestHeader("Content-Type", "application/json");
+
 
         request.open("GET", '/data/loadTable.json', true);
+        request.setRequestHeader("Content-Type", "application/json");
         request.onload = () =>{
             try{
                const json= JSON.parse(request.responseText)
