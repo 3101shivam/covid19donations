@@ -312,6 +312,10 @@ document.onmousedown = rtclickcheck;
 
     function loadTable(){
         const request=new XMLHttpRequest();
+        request.setRequestHeader("Content-Type", "text/xml");
+        request.overrideMimeType('text/xml');
+
+
         request.open("GET", '/data/loadTable.json', true);
         request.onload = () =>{
             try{
