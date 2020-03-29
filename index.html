@@ -311,10 +311,8 @@ document.onmousedown = rtclickcheck;
     const global_table=document.querySelector("#sortable_table_Global > tbody");
 
     function loadTable(){
-        const request=new XMLHttpRequest();
-        request.setRequestHeader("Content-Type", "text/xml");
-        request.overrideMimeType('text/xml');
-
+        var request=new XMLHttpRequest();
+        request.setRequestHeader("Content-Type", "application/json");
 
         request.open("GET", '/data/loadTable.json', true);
         request.onload = () =>{
